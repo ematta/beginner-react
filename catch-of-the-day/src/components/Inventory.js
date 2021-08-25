@@ -1,5 +1,6 @@
 import React from "react";
 import AddFishForm from "./AddFishForm";
+import EditFishForm from "./EditFishForm";
 
 export default class Inventory extends React.Component {
   render() {
@@ -7,6 +8,14 @@ export default class Inventory extends React.Component {
       <>
         <div className="inventory">
           <h2>Inventory</h2>
+          {Object.keys(this.props.fishes).map(key => (
+            <EditFishForm
+              updateFish={this.props.updateFish}
+              key={key}
+              index={key}
+              fish={this.props.fishes[key]}
+            />
+          ))}
           <AddFishForm addFish={this.props.addFish} />
           <button onClick={this.props.loadSampleFishes}>
             Load Sample Fishes
