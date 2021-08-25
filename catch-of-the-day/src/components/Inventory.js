@@ -1,8 +1,9 @@
 import React from "react";
 import AddFishForm from "./AddFishForm";
 import EditFishForm from "./EditFishForm";
+import PropTypes from "prop-types";
 
-export default class Inventory extends React.Component {
+class Inventory extends React.Component {
   render() {
     return (
       <>
@@ -11,6 +12,7 @@ export default class Inventory extends React.Component {
           {Object.keys(this.props.fishes).map(key => (
             <EditFishForm
               updateFish={this.props.updateFish}
+              deleteFish={this.props.deleteFish}
               key={key}
               index={key}
               fish={this.props.fishes[key]}
@@ -25,3 +27,13 @@ export default class Inventory extends React.Component {
     );
   }
 }
+
+Inventory.propTypes = {
+  addFish: PropTypes.func,
+  loadSampleFishes: PropTypes.func,
+  updateFish: PropTypes.func,
+  deleteFish: PropTypes.func,
+  fishes: PropTypes.object,
+};
+
+export default Inventory;

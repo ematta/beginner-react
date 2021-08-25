@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default class EditFishForm extends React.Component {
+class EditFishForm extends React.Component {
   handleChange = event => {
     //take copy of fish
     const updatedFish = {
@@ -43,7 +44,20 @@ export default class EditFishForm extends React.Component {
           onChange={this.handleChange}
           value={this.props.fish.image}
         />
+        <button onClick={() => this.props.deleteFish(this.props.index)}>
+          Remove Fish
+        </button>
       </div>
     );
   }
 }
+
+EditFishForm.propTypes = {
+  fish: PropTypes.object,
+  fishes: PropTypes.object,
+  updateFish: PropTypes.func,
+  index: PropTypes.string,
+  deleteFish: PropTypes.func,
+};
+
+export default EditFishForm;
